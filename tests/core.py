@@ -1,5 +1,5 @@
 import unittest
-from src.core import perform
+from src.core import perform, solve
 
 
 class TestPerform(unittest.TestCase):
@@ -33,3 +33,12 @@ class TestPerform(unittest.TestCase):
         self.assertEqual(perform('=', False, True), False, 'False = True should be False')
         self.assertEqual(perform('=', True, False), False, 'True = False should be False')
         self.assertEqual(perform('=', True, True), True, 'True = True should be True')
+
+
+class TestSolve(unittest.TestCase):
+    def test_simple_expression(self):
+        self.assertEqual(solve([False, False, '+']), False)
+
+
+    def test_complex_expression(self):
+        self.assertEqual(solve([True, False, True, False, '*', '+', True, '+', '=', False, '>']), False)
