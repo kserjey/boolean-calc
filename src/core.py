@@ -25,7 +25,7 @@ def solve(expression):
         if token in allowed_opr:
             b = stack.pop()
             a = stack.pop()
-            res = perform(a, b, token)
+            res = perform(token, a, b)
             stack.append(res)
         else:
             stack.append(token)
