@@ -38,7 +38,9 @@ class TestPerform(unittest.TestCase):
 class TestSolve(unittest.TestCase):
     def test_simple_expression(self):
         self.assertEqual(solve([False, False, '+']), False)
+        self.assertEqual(solve([True, False, '>']), False)
 
 
     def test_complex_expression(self):
         self.assertEqual(solve([True, False, True, False, '*', '+', True, '+', '=', False, '>']), False)
+        self.assertEqual(solve([True, False, '>', False, True, '+', '=']), False)
