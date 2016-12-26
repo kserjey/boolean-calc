@@ -18,11 +18,15 @@ def solve(expression):
     """
     Solve expression in postfix notation.
     """
-    allowed_opr = ['!', '*', '+', '>', '=']
+    allowed_opr = ['*', '+', '>', '=']
     stack = []
 
     for token in expression:
-        if token in allowed_opr:
+        if token == '!':
+            a = stack.pop()
+            res = perform(token, a)
+            stack.append(res)
+        elif token in allowed_opr:
             b = stack.pop()
             a = stack.pop()
             res = perform(token, a, b)
