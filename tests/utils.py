@@ -34,3 +34,14 @@ class TestCountArguments(unittest.TestCase):
         self.assertEqual(count_arguments('A + A'), 1, 'Should count repeated arguments')
         self.assertEqual(count_arguments('D + D + D + D'), 1, 'Should count repeated arguments')
         self.assertEqual(count_arguments('A + A * B + C * A + A'), 3, 'Should count repeated arguments')
+
+
+class TestParseConverstation(unittest.TestCase):
+    def test_one_arument(self):
+        self.assertEqual(parse_expression('A + A'), [[False, False], [True, True]])
+        self.assertEqual(parse_expression('A + A * A'), [[False, False], [True, True]])
+
+
+    def test_multiplie_arguments(self):
+        self.assertEqual(parse_expression('A + B'), [[False, False, False], [False, True, True], [True, False, True], [True, True, True]])
+        self.assertEqual(parse_expression('A + B * A'), [[False, False, False], [False, True, False], [True, False, True], [True, True, True]])
