@@ -6,7 +6,7 @@ def convert_to_postfix(expression):
     """
     Convert infix expression to postfix style. Return list of symbols in postfix notation.
     """
-    infix = expression.split()
+    infix = list(map(str.strip, expression.split()))
     opr_priority = {'!': 4, '*': 3, '+': 2, '>': 1, '=': 1, '(': 0}
     postfix = []
     stack = []
