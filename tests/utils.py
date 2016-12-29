@@ -5,17 +5,17 @@ from src.utils import *
 class TestConvertationToPostfix(unittest.TestCase):
     def test_simple_convert(self):
         self.assertEqual(convert_to_postfix('A + B'), ['A', 'B', '+'], 'Should convert to postfix notation')
-        self.assertEqual(convert_to_postfix('A + B + C'), ['A', 'B', '+', 'C', '+'], 'Should convert to postfix notation')
+        self.assertEqual(convert_to_postfix('A+B+C'), ['A', 'B', '+', 'C', '+'], 'Should convert to postfix notation')
 
 
     def test_brackets(self):
         self.assertEqual(convert_to_postfix('( A + B ) * C'), ['A', 'B', '+', 'C', '*'], 'Brackets should be considered')
-        self.assertEqual(convert_to_postfix('( A * B + ( A + B ) ) * C'), ['A', 'B', '*', 'A', 'B', '+', '+', 'C', '*'], 'Brackets should be considered')
+        self.assertEqual(convert_to_postfix('(A*B+(A+B))*C'), ['A', 'B', '*', 'A', 'B', '+', '+', 'C', '*'], 'Brackets should be considered')
 
 
     def test_opreration_priority(self):
         self.assertEqual(convert_to_postfix('A + B * C'), ['A', 'B', 'C', '*', '+'], 'Operator priority should be considered')
-        self.assertEqual(convert_to_postfix('A > B = C + A * B'), ['A', 'B', '>', 'C', 'A', 'B', '*', '+', '='], 'Operator priority should be considered')
+        self.assertEqual(convert_to_postfix('A>B=C+A*B'), ['A', 'B', '>', 'C', 'A', 'B', '*', '+', '='], 'Operator priority should be considered')
 
 
 class TestInitTable(unittest.TestCase):
