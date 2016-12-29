@@ -1,10 +1,10 @@
 import argparse
 from src.utils import *
 
-#parser = argparse.ArgumentParser(prog='boolean-calc', description='Construction of logical tables')
-#parser.add_argument('expression', nargs=1, type=str, help='boolean expression')
-#
-#args = parser.parse_args()
-#print(args.expression)
+parser = argparse.ArgumentParser(prog='boolean-calc', description='Calculator that build logical table from boolean expression')
+parser.add_argument('expression', nargs='+', help='boolean expression')
+args = parser.parse_args()
 
-format(parse_expression('( A > B ) = C'))
+print("Expression:", expression)
+
+format(parse_expression(expression))
