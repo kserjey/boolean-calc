@@ -3,4 +3,10 @@ python:
   - 3.3
   - 3.4
   - 3.5
-script: "python -m unittest discover -v tests/"
+install:
+  - pip install coverage
+  - pip install coveralls
+script:
+  - python -m unittest discover -v tests/
+  - coverage run main.py A+B
+  - coveralls
