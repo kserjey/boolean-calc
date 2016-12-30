@@ -10,3 +10,5 @@ script:
   - python -m unittest discover -v tests/
   - coverage run main.py A+B
   - coveralls
+after_success:
+  - coveralls
