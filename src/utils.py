@@ -62,6 +62,7 @@ def parse_expression(str_expression):
             else:
                 parsed_table[i].append(token)
 
+
     for i, row in enumerate(parsed_table):
         table[i].append(solve(row))
 
@@ -70,18 +71,18 @@ def parse_expression(str_expression):
 
 def init_table(var_count):
     """
-    Return logic table of var_count arguments
+    Create table in file and return stream
     """
     rows_count = int(math.pow(2, var_count))
-    table = [[0 for i in range(var_count)] for i in range(rows_count)]
+    table = open('table', 'w+')
 
-    for i, row in enumerate(table):
-        for k, value in enumerate(row):
+    for i in range(rows_count):
+        for k in range(var_count):
             tmp = rows_count // math.pow(2, (k + 1))
-            if (i // tmp) % 2:
-                table[i][k] = True
-            else:
-                table[i][k] = False
+            table.write(str(int(i // tmp % 2)))
+        table.write('\n')
+
+    table.seek(0)
 
     return table
 
